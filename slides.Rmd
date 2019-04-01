@@ -18,9 +18,8 @@ knitr::opts_chunk$set(echo = FALSE)
 ## How I learnt R
 
 - Previous BSC in Computer Science
-    + Ada, Scheme, Java?
 - Data Analysis Msc at York
-- Statistics module
+- Statistics module taught using R
 - PDF lectures with practicals afterwards
 
 <img src="images/r-in-2003.png" style="width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
@@ -32,26 +31,10 @@ knitr::opts_chunk$set(echo = FALSE)
 <img src="images/RGui-2003.png" style="width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
 
 
-## How I started to teach R
 
-- Started PhD in 2005 on *microarray* data
-    + high-throughput technology for investigating DNA
-    + we were developing software from scratch to analyse these data
-- Helped with specialised courses 1 / 2 times a year
-    + R as a pre-requisite
-<img src="images/R-intro.png" style="width: 50%; display: block; margin-left: auto; margin-right: auto;"/>
+## First attempts at teaching R
 
-
-## Step forward a few years...
-
-- Moved to support role
-- Helping researchers (biologists) with their analysis
-- Designing experiments
-- Hands-on training
-
-
-## Teaching a established course
-
+- ~2012/2013 (?)
 - A pre-requisite to the courses I was already teaching
 - Established and developed over a number of years
 - Materials [still online](http://logic.sysbiol.cam.ac.uk/teaching/Rcourse/)
@@ -93,6 +76,7 @@ knitr::opts_chunk$set(echo = FALSE)
     + ozone / weather dataset
     + "patient" weights / heights
     + (gene expression dataset)
+- Huge list of datasets with downloads thanks to [Vincent Arel Bundock](https://vincentarelbundock.github.io/Rdatasets/datasets.html)
 
 ## What to do about Stats
 
@@ -106,7 +90,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## What to do about Stats
 
 - Cover the use of `t.test`
-    + doing paired t-test vs independent t-test not much harder
+    + doing paired t-test vs independent t-test not much harder (or `wilcox.test`)
     + difficulty is knowing what test to apply
 - For basic stats, we developed [some Shiny apps](https://www.cruk.cam.ac.uk/core-facilities/bioinformatics-core/statistics-web-applications)
     + focus is on interpreting data and results
@@ -132,7 +116,8 @@ http://cambiotraining.github.io/r-intro/
 - My preconception (at the time) that everyone learns base R first and then learns tidyverse afterwards
     + probably based on how I learnt R!
 - Not all packages use ggplot2 for plotting
-    + some types of data not traditionally "long" format
+    + some types of data (e.g. Genomics) not traditionally "long" format
+- (Spoiler alert - I eventually decided to teach tidyverse rather than base)
 
 ## New "intermediate R" course
 - Online [here](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
@@ -167,7 +152,17 @@ http://cambiotraining.github.io/r-intro/
 
 ## Enter the carpentries
 
+https://carpentries.org/
 
+<img src="images/carpentries-home.png" style="width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+
+## Software Carpentry
+
+<img src="images/sc-lessons.png" style="width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+
+## Data Carpentry
+
+<img src="images/dc-lessons.png" style="width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
 
 ## Other nice features
 
@@ -176,7 +171,8 @@ http://cambiotraining.github.io/r-intro/
     - Yellow = Ready to move on
     - Pink = Help me
     - Also used to get feedback
-    
+- **Instructor training programme**
+
 ## Another new course
 
 http://sbc.shef.ac.uk/training/r-introduction-2019-03-29/
@@ -188,11 +184,12 @@ http://sbc.shef.ac.uk/training/r-introduction-2019-03-29/
 
 ##
 
-```{r echo=TRUE, fig.height=6}
+```{r echo=TRUE, fig.height=4}
 suppressPackageStartupMessages(library(tidyverse))
 read.csv("gapminder.csv") %>% 
   filter(continent!="Oceania") %>% 
-  ggplot(aes(x=as.factor(year),y=lifeExp,fill=continent)) + geom_boxplot() + facet_wrap(~continent)
+  ggplot(aes(x=as.factor(year),y=lifeExp,fill=continent)) + geom_boxplot() + 
+  facet_wrap(~continent)
 
 ```
 
@@ -202,10 +199,21 @@ read.csv("gapminder.csv") %>%
     + carpentry materials can be used
 - We are building a network of trainers
     + interested in carpentry instructor training? let us know
+- Don't try and do too much
+    + focus on Core skills, and do them well
+- Do something exciting early on
+    + a cool plot, filter some data
+- Choose dataset carefully
+    + unless you can guarentee background of participants, choose something generic. e.g. gapminder
+    + maybe add an extra section analysing a domain-specific dataset
+
+## Thinking about running a course    
+    
 - Setup on participant machines can be a headache
-    + Benefit that they can use them afterwards
+    + Tempting to use a computer room with everything pre-installed
+    + But will they be able to use it afterwards?
+- Send installation instructions in advance
+    + offer drop-in sessions to help with install?
 - Could use Docker / Virtual Machine
     + But could be as complicated to setup as R itself
     + Cloud compute is an option (AWS etc)
-
-
