@@ -147,6 +147,7 @@ http://cambiotraining.github.io/r-intro/
     + no colours
     + one piece of data per column
     + no spaces
+    + consistent groups (Male, Female, M, F, male...)
     + etc
 - What about version control?    
 
@@ -182,7 +183,7 @@ http://sbc.shef.ac.uk/training/r-introduction-2019-03-29/
     + except 10 minute introduction
 - using gapminder data
 
-##
+## 
 
 ```{r echo=TRUE, fig.height=4}
 suppressPackageStartupMessages(library(tidyverse))
@@ -196,8 +197,8 @@ read.csv("gapminder.csv") %>%
 ## Thinking about running a course?
 
 - Plenty of materials for re-use
-    + carpentry materials can be used
-- We are building a network of trainers
+    + carpentry materials can be used (with caveat)
+- We are building a network of trainers / demonstrators
     + interested in carpentry instructor training? let us know
 - Don't try and do too much
     + focus on Core skills, and do them well
@@ -217,3 +218,13 @@ read.csv("gapminder.csv") %>%
 - Could use Docker / Virtual Machine
     + But could be as complicated to setup as R itself
     + Cloud compute is an option (AWS etc)
+
+## Best way to learn R
+
+- Practice, practice, practice
+    + if you don't have your own data, find some fun datasets to play with
+- Read the blogs / twitter
+    + [R-bloggers](https://www.r-bloggers.com/)
+- Persevere 
+
+> "The bad news is that when ever you learn a new skill you're going to suck. It's going to be frustrating. The good news is that is typical and happens to everyone and it is only temporary. You can't go from knowing nothing to becoming an expert without going through a period of great frustration and great suckiness." - Hadley Wickham, useR 2014
